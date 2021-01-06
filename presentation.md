@@ -175,7 +175,7 @@ The figure depicts a Rancher Server installation that manages two downstream Kub
 
 - *Cluster 1*: created by RKE
 
-- *Cluster 3*: created by Amazon EKS (Elastic Kubernetes Service).
+- *Cluster 2*: created by Amazon EKS (Elastic Kubernetes Service).
 ]
 .col-5[
 .responsive[![rancher server](./images/rancher-architecture-rancher-api-server.svg)]
@@ -193,13 +193,13 @@ This diagram shows each component that the Rancher server is composed of:
 
 # Rancher/Kubernetes basic concepts
 
-- Namespace
 - Project
-- Services
+- Namespace
+- Service
 - Pods
 - Secrets
 - Storage
-- Permision/roles in rancher
+- Permissions/roles
 
 ---
 
@@ -223,7 +223,7 @@ This diagram shows each component that the Rancher server is composed of:
 
 .center.huge.primary[**DEMO TIME**]
 
-- Deploy cluster in google cloud/aws/hetzner
+- Deploy cluster in google cloud/aws/hetzner...
 - Deploy sample project using gitlab CI/CD
 - Configure prometheus + grafana for entire cluster
 - Configure alerts in email/slack
