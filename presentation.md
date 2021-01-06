@@ -215,7 +215,9 @@ This diagram shows each component that the Rancher server is composed of:
 
 ## Presentation online in github
 
-[https://github](github.com)
+[https://d0whc3r.github.io/rancher2-presentation/](https://d0whc3r.github.io/rancher2-presentation/)
+
+[https://rancher2-presentation.netlify.app](https://rancher2-presentation.netlify.app)
 
 ---
 

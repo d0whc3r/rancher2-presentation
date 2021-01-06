@@ -10,6 +10,6 @@ Created using [backslide](https://github.com/sinedied/backslide)
 
 ## Online presentation
 
-Github pages: http...
+Github pages: [https://d0whc3r.github.io/rancher2-presentation/](https://d0whc3r.github.io/rancher2-presentation/)
 
 Netlify: [https://rancher2-presentation.netlify.app](https://rancher2-presentation.netlify.app)
