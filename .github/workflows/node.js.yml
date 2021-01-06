@@ -36,9 +36,6 @@ jobs:
         FOLDER: dist
         CLEAN: true
     - uses: FranzDiebold/github-env-vars-action@v2
-      run: |
-        echo "::set-env name=IMAGE_NAME::${CI_REPOSITORY_NAME}"
-        echo "::set-env name=IMAGE_TAG::${CI_ACTION_REF_NAME_SLUG}"
     - name: Build and Push to GitHub Packages
       uses: VaultVulp/gp-docker-action@1.1.7
       with:
