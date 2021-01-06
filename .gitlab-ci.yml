@@ -30,6 +30,9 @@ install_deps:
 build_presentation:
   <<: *generic_cache_pull
   stage: build
+  only:
+    changes:
+      - presentation.md
   dependencies:
     - install_deps
   script:
@@ -42,6 +45,12 @@ build_presentation:
 deploy_docker:
   <<: *generic_cache_pull
   stage: build
+  only:
+    changes:
+      - sample-project/*
+  image: docker:git
+  services:
+    - docker:dind
   dependencies:
     - install_deps
   script:
