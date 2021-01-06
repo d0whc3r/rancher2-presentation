@@ -28,13 +28,16 @@ jobs:
     - run: yarn install --frozen-lockfile --check-files --cache-folder ~/.yarn/cache
     - run: cd sample-project; yarn install --frozen-lockfile --check-files --cache-folder ~/.yarn/cache
     - run: yarn build
-    - name: Build and Push to GitHub Packages
-      uses: docker/build-push-action@v1
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: docker.pkg.github.com
-        repository: ${{ github.repository }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: dist
+        CLEAN: true
+    - name: Build and Push to GitHub Packages
+      uses: docker/build-push-action@v2
+      with:
         context: .
         file: ./Dockerfile
         platforms: linux/amd64
