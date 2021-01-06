@@ -30,10 +30,6 @@ install_deps:
 build_presentation:
   <<: *generic_cache_pull
   stage: build
-  only:
-    changes:
-      - presentation.md
-      - .gitlab-ci.yml
   dependencies:
     - install_deps
   script:
@@ -46,10 +42,6 @@ build_presentation:
 deploy_docker:
   <<: *generic_cache_pull
   stage: build
-  only:
-    changes:
-      - sample-project/*
-      - .gitlab-ci.yml
   image: docker:git
   services:
     - docker:dind
