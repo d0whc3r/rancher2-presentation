@@ -1,0 +1,12 @@
+{
+  "name": "rancher2-presentation",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "bs s",
+    "build": "bs e -b -f -o dist"
+  },
+  "devDependencies": {
+    "backslide": "^2.6.2"
+  }
+}
