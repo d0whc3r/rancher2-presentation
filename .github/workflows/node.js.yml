@@ -38,7 +38,10 @@ jobs:
     - uses: FranzDiebold/github-env-vars-action@v2
     - name: Build and Push to GitHub Packages
       uses: VaultVulp/gp-docker-action@1.1.7
+      env:
+        IMAGE_NAME: $CI_REPOSITORY_NAME
+        IMAGE_TAG: $CI_ACTION_REF_NAME_SLUG
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        image-name: $CI_REPOSITORY_NAME
-        image-tag: $CI_ACTION_REF_NAME_SLUG
+        image-name: ${{ IMAGE_NAME }}
+        image-tag: ${{ IMAGE_TAG }}
