@@ -33,6 +33,7 @@ build_presentation:
   only:
     changes:
       - presentation.md
+      - .gitlab-ci.yml
   dependencies:
     - install_deps
   script:
@@ -48,6 +49,7 @@ deploy_docker:
   only:
     changes:
       - sample-project/*
+      - .gitlab-ci.yml
   image: docker:git
   services:
     - docker:dind
