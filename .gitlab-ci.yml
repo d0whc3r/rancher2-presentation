@@ -1,32 +1,8 @@
 image: node:14-alpine
 
 stages:
-  - install
   - build
   - rancher
-
-.x_cache_config: &generic_cache_config
-  key: ${CI_COMMIT_REF_SLUG}-${CI_PROJECT_DIR}
-  paths:
-    - ~/.yarn/cache
-    - node_modules
-    - sample-project/node_modules
-
-.x_cache_install: &generic_cache_install
-  cache:
-    <<: *generic_cache_config
-
-.x_cache_install_pull: &generic_cache_pull
-  cache:
-    policy: pull
-    <<: *generic_cache_config
-
-install_deps:
-  <<: *generic_cache_install
-  stage: install
-  script:
-    - yarn install --frozen-lockfile --check-files --cache-folder ~/.yarn/cache
-    - cd sample-project; yarn install --frozen-lockfile --check-files --cache-folder ~/.yarn/cache
 
 deploy_docker:
   stage: build
