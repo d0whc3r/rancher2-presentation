@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
       title: 'Web title',
       message: Math.random().toString(36).slice(2),
       hostname: os.hostname(),
-      client: ip
+      variable: process.env.OUTPUT_VAR || 'NOT CONFIGURED'
     });
 });
 

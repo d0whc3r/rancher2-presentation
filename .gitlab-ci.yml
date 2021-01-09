@@ -3,6 +3,7 @@ image: node:14-alpine
 stages:
   - install
   - build
+  - rancher
 
 .x_cache_config: &generic_cache_config
   key: ${CI_COMMIT_REF_SLUG}-${CI_PROJECT_DIR}
@@ -52,3 +53,12 @@ deploy_docker:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker build -t ${IMAGENAME} .
     - docker push ${IMAGENAME}
+
+#deploy-rancher2:
+#  image: d0whc3r/rancher-cli
+#  stage: rancher
+#  script:
+#    - rancher login --token "$RANCHER2_TOKEN" --context "$RANCHER2_CONTEXT" "$RANCHER2_URL"
+#    - rancher kubectl --namespace="$RANCHER2_NAMESPACE" patch deployment sample-project --type=strategic -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"$(date)\"}}}}}"
+#  after_script:
+#    - rm -fr ~/.rancher

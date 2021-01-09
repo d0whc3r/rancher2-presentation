@@ -226,6 +226,5 @@ This diagram shows each component that the Rancher server is composed of:
 - Deploy cluster in google cloud/aws/hetzner...
 - Deploy sample project using gitlab CI/CD
 - Configure prometheus + grafana for entire cluster
-- Configure alerts in email/slack
 - Auto scaling
 - Cluster backup (velero) in s3 (minio)
