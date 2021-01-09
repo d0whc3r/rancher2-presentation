@@ -54,11 +54,11 @@ deploy_docker:
     - docker build -t ${IMAGENAME} .
     - docker push ${IMAGENAME}
 
-#deploy-rancher2:
-#  image: d0whc3r/rancher-cli
-#  stage: rancher
-#  script:
-#    - rancher login --token "$RANCHER2_TOKEN" --context "$RANCHER2_CONTEXT" "$RANCHER2_URL"
-#    - rancher kubectl --namespace="$RANCHER2_NAMESPACE" patch deployment sample-project --type=strategic -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"$(date)\"}}}}}"
-#  after_script:
-#    - rm -fr ~/.rancher
+deploy-rancher2:
+  image: d0whc3r/rancher-cli
+  stage: rancher
+  script:
+    - rancher login --token "$RANCHER_TOKEN" --context "$RANCHER_CONTEXT" "$RANCHER_URL"
+    - rancher kubectl --namespace="$RANCHER_NAMESPACE" patch deployment sample-project --type=strategic -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"$(date)\"}}}}}"
+  after_script:
+    - rm -fr ~/.rancher
