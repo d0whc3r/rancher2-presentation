@@ -28,20 +28,7 @@ install_deps:
     - yarn install --frozen-lockfile --check-files --cache-folder ~/.yarn/cache
     - cd sample-project; yarn install --frozen-lockfile --check-files --cache-folder ~/.yarn/cache
 
-build_presentation:
-  <<: *generic_cache_pull
-  stage: build
-  dependencies:
-    - install_deps
-  script:
-    - yarn build
-    - cp -r dist public
-  artifacts:
-    paths:
-      - public
-
 deploy_docker:
-  <<: *generic_cache_pull
   stage: build
   image: docker:git
   services:
@@ -54,11 +41,13 @@ deploy_docker:
     - docker build -t ${IMAGENAME} .
     - docker push ${IMAGENAME}
 
-deploy-rancher2:
-  image: d0whc3r/rancher-cli
-  stage: rancher
-  script:
-    - rancher login --token "$RANCHER_TOKEN" --context "$RANCHER_CONTEXT" "$RANCHER_URL"
-    - rancher kubectl --namespace="$RANCHER_NAMESPACE" patch deployment sample-project --type=strategic -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"$(date)\"}}}}}"
-  after_script:
-    - rm -fr ~/.rancher
+#deploy-rancher:
+#  image: d0whc3r/rancher-cli
+#  stage: rancher
+#  dependencies:
+#    - deploy_docker
+#  script:
+#    - rancher login --token "$RANCHER_TOKEN" --context "$RANCHER_CONTEXT" "$RANCHER_URL"
+#    - rancher kubectl --namespace="$RANCHER_NAMESPACE" patch deployment sample-project --type=strategic -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"$(date)\"}}}}}"
+#  after_script:
+#    - rm -fr ~/.rancher
