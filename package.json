@@ -7,6 +7,6 @@
     "build": "bs e -b -f -o dist"
   },
   "devDependencies": {
-    "backslide": "2.6.2"
+    "backslide": "3.1.0"
   }
 }
